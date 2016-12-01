@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui" xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>#RealcePro</title>
+	<meta name="author" content="Yuri Morais"></meta>
+</h:head>
+<h:body style="padding-top: 50px; padding-bottom: 20px;">
+	<b:navBar brand="RealcePro" brandHref="logado.jsf" inverse="true"
+		fixed="top" rendered="#{usuarioBean.verificarSessao()}">
+		<b:navbarLinks rendered="#{usuarioBean.verificarSessao()}">
+			<b:navLink value="Meu Treino" href="lista-exercicio.jsf"></b:navLink>
+			<b:navLink value="Avisos" href="aviso.jsf"></b:navLink>
+
+
+			<b:dropMenu value="Meu Perfil">
+				<b:navLink value="Visualizar" href="perfil-usuario.jsf"></b:navLink>
+
+				<b:navLink></b:navLink>
+				<b:navLink header="Seja Bem Vindo"></b:navLink>
+
+
+			</b:dropMenu>
+
+
+
+		</b:navbarLinks>
+
+
+		<h:form styleClass="navbar-form navbar-right"
+			rendered="#{usuarioBean.verificarSessao()}">
+			<div class="form-group">
+
+				<b:label text="Bem Vindo" severity="sucess" />
+
+			</div>
+
+			<b:label text="#{usuarioBean.usuario.email}" severity="primary" />
+                  #{' '}
+               <div class="form-group">
+				<b:commandButton value="Sair"
+					action="#{usuarioBean.encerrarSessao()}" />
+			</div>
+
+		</h:form>
+	</b:navBar>
+	<b:jumbotron rendered="#{usuarioBean.verificarSessao()}">
+		<b:container>
+
+			<p:panel>
+			<h3>Perfil</h3>
+			<b:panel>
+				<p:panelGrid columns="2">
+					<p:outputLabel value="Email" />
+					<h:outputLabel value="#{usuarioBean.usuario.email}" />
+					
+				</p:panelGrid>
+				
+
+			</b:panel>
+			</p:panel>
+		</b:container>
+	</b:jumbotron>
+	<b:container rendered="#{usuarioBean.verificarSessao()}">
+
+		<hr />
+
+		<footer>
+			<p>® Yuri Morais / 2016</p>
+		</footer>
+	</b:container>
+
+</h:body>
+</html>

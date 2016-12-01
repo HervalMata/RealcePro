@@ -1,0 +1,127 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui" xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>#RealcePro</title>
+	<meta name="author" content="Yuri Morais"></meta>
+</h:head>
+<h:body style="padding-top: 50px; padding-bottom: 20px;">
+	<b:navBar brand="RealcePro" brandHref="index_admin.jsf" inverse="true"
+		fixed="top" rendered="#{adminBean.verificarSessao()}">
+		<b:navbarLinks rendered="#{adminBean.verificarSessao()}">
+
+			<b:dropMenu value="Aluno">
+				<b:navLink value="Adicionar" href="#"></b:navLink>
+
+				<b:navLink></b:navLink>
+				<b:navLink value="Visualizar" />
+
+
+			</b:dropMenu>
+
+
+
+			<b:dropMenu value="Treino">
+				<b:navLink value="Adicionar" href="cadastro-exercicio.jsf"></b:navLink>
+
+				<b:navLink></b:navLink>
+				<b:navLink value="Visualizar" href="lista-exercicio.jsf" />
+			</b:dropMenu>
+
+			<b:dropMenu value="Exercicio">
+				<b:navLink value="Adicionar" href="#"></b:navLink>
+
+				<b:navLink></b:navLink>
+				<b:navLink value="Visualizar"></b:navLink>
+`
+
+			</b:dropMenu>
+
+			<b:dropMenu value="Aviso">
+				<b:navLink value="Adicionar" href="cadastro-aviso.jsf"></b:navLink>
+
+				<b:navLink></b:navLink>
+				<b:navLink value="Visualizar" href="avisoadmin.jsf"></b:navLink>
+
+
+			</b:dropMenu>
+
+			<b:dropMenu value="Meu Perfil">
+				<b:navLink value="Visualizar" href="#"></b:navLink>
+
+				<b:navLink></b:navLink>
+				<b:navLink header="Seja Bem Vindo"></b:navLink>
+
+
+			</b:dropMenu>
+
+
+
+		</b:navbarLinks>
+
+
+		<h:form styleClass="navbar-form navbar-right"
+			rendered="#{adminBean.verificarSessao()}">
+			<div class="form-group">
+				`
+				<b:label text="Bem Vindo" severity="sucess" />
+			</div>
+		
+                  #{' '}
+               <div class="form-group">
+				<b:commandButton value="Sair" action="#{adminBean.encerrarSessao()}"
+					look="success" />
+			</div>
+
+		</h:form>
+	</b:navBar>
+	<b:jumbotron rendered="#{adminBean.verificarSessao()}">
+		<b:container>
+			<h2>Meu Treino</h2>
+			<h:form>
+
+				<b:growl />
+
+				<p:dataTable id="tbl" value="#{exercicioBean.exercicios}"
+					var="exercicio" paginator="true" rows="5"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink}  {PageLinks}  {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="5,10,15,20,25,30">
+
+					<p:column headerText="Nome" sortBy="#{exercicio.nomeExerc.nome}"
+						filterBy="#{exercicio.nomeExerc.nome}">
+						<p:outputLabel value="#{exercicio.nomeExerc.nome}" />
+					</p:column>
+					<p:column headerText="Grupo Muscular"
+						sortBy="#{exercicio.nomeExerc.gMusc}"
+						filterBy="#{exercicio.nomeExerc.gMusc}">
+						<p:outputLabel value="#{exercicio.nomeExerc.gMusc.label}" />
+					</p:column>
+
+					<p:column headerText="Serie / Repetiçao"
+						sortBy="#{exercicio.serieRepe}" filterBy="#{exercicio.serieRepe}">
+						<p:outputLabel value="#{exercicio.serieRepe.label}" />
+					</p:column>
+
+					<p:column headerText="Usuario" sortBy="#{exercicio.usuario}"
+						filterBy="#{exercicio.usuario}">
+						<p:outputLabel value="#{exercicio.usuario}" />
+					</p:column>
+
+				</p:dataTable>
+			</h:form>
+
+		</b:container>
+	</b:jumbotron>
+	<b:container rendered="#{adminBean.verificarSessao()}">
+
+		<hr />
+
+		<footer>
+			<p>� Yuri Morais / 2016</p>
+		</footer>
+	</b:container>
+
+</h:body>
+</html>

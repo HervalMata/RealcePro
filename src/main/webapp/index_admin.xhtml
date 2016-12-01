@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui" xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>#RealcePro</title>
+	<meta name="author" content="Yuri Morais"></meta>
+</h:head>
+<h:body style="padding-top: 50px; padding-bottom: 20px;">
+	<b:navBar brand="RealcePro" brandHref="index_admin.jsf" inverse="true"
+		fixed="top" rendered="#{adminBean.verificarSessao()}">
+		<b:navbarLinks rendered="#{adminBean.verificarSessao()}">
+
+			<b:dropMenu value="Aluno">
+				<b:navLink value="Adicionar" href="cadastro-usuario.jsf"></b:navLink>
+
+				<b:navLink></b:navLink>
+				<b:navLink value="Visualizar" href="lista-alunos.jsf" />
+
+
+			</b:dropMenu>
+
+
+			<b:dropMenu value="Administrador">
+				<b:navLink value="Adicionar" href="cadastro-admin.jsf"></b:navLink>
+
+				<b:navLink></b:navLink>
+				<b:navLink value="Visualizar" href="lista-admin.jsf"></b:navLink>
+`
+
+			</b:dropMenu>
+
+			<b:dropMenu value="Treino">
+				<b:navLink value="Adicionar" href="cadastro-exercicio.jsf"></b:navLink>
+
+				<b:navLink></b:navLink>
+				<b:navLink value="Visualizar" href="lista-treinos.jsf" />
+			</b:dropMenu>
+
+			<b:dropMenu value="Exercicio">
+				<b:navLink value="Adicionar" href="cadastro-nomeExercicio.jsf"></b:navLink>
+
+				<b:navLink></b:navLink>
+				<b:navLink value="Visualizar" href="lista-exercicio.jsf" />
+			</b:dropMenu>
+
+			<b:dropMenu value="Aviso">
+				<b:navLink value="Adicionar" href="cadastro-aviso.jsf"></b:navLink>
+
+				<b:navLink></b:navLink>
+				<b:navLink value="Visualizar" href="avisoadmin.jsf"></b:navLink>
+
+
+			</b:dropMenu>
+
+		</b:navbarLinks>
+
+
+		<h:form styleClass="navbar-form navbar-right"
+			rendered="#{adminBean.verificarSessao()}">
+			<div class="form-group">
+
+				<b:label text="Bem Vindo" severity="sucess" />
+			</div>
+
+			<div class="form-group">
+				<b:commandButton value="Sair" action="#{adminBean.encerrarSessao()}"
+					look="success" />
+			</div>
+
+		</h:form>
+	</b:navBar>
+	<b:jumbotron rendered="#{adminBean.verificarSessao()}">
+		<b:container>
+			<h1>RealcePro</h1>
+			<h2>Seja Bem Vindo ao RealcePro</h2>
+			<h3></h3>
+			<p>O Sistema desenvolvido para auxiliar seus alunos no treino.</p>
+
+		</b:container>
+	</b:jumbotron>
+	<b:container rendered="#{adminBean.verificarSessao()}">
+		<b:row>
+			<b:image small-screen="one-third" value="resouces/img/acc.jpg"
+				tooltip="Voce em forma'" />
+			<b:image small-screen="one-third" value="resouces/img/ini.jpg"
+				tooltip="Aumente sua auto-estima" />
+			<b:image small-screen="one-third" value="resouces/img/po.jpg"
+				tooltip="O corpo desejado'" />
+		</b:row>
+		<hr />
+
+		<footer>
+			<p>® Yuri Morais / 2016</p>
+		</footer>
+	</b:container>
+
+</h:body>
+</html>

@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui" xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>#RealcePro</title>
+	<meta name="author" content="Yuri Morais"></meta>
+</h:head>
+<h:body style="padding-top: 50px; padding-bottom: 20px;">
+	<b:navBar brand="RealcePro" brandHref="logado.jsf" inverse="true"
+		fixed="top" rendered="#{usuarioBean.verificarSessao()}">
+		<b:navbarLinks rendered="#{usuarioBean.verificarSessao()}">
+
+
+			<b:navLink value="Meu Treino" href="lista-exercicio.jsf"></b:navLink>
+			<b:navLink value="Avisos" href="aviso.jsf"></b:navLink>
+
+
+			<b:dropMenu value="Meu Perfil">
+				<b:navLink value="Visualizar" href="perfil-usuario.jsf"></b:navLink>
+
+				<b:navLink></b:navLink>
+				<b:navLink header="Seja Bem Vindo"></b:navLink>
+
+
+			</b:dropMenu>
+
+
+
+		</b:navbarLinks>
+
+
+		<h:form styleClass="navbar-form navbar-right"
+			rendered="#{usuarioBean.verificarSessao()}">
+			<div class="form-group">
+				`
+				<b:label text="Bem Vindo" severity="sucess" />
+			</div>
+		
+                  #{' '}
+               <div class="form-group">
+				<b:commandButton value="Sair"
+					action="#{usuarioBean.encerrarSessao()}" look="success" />
+			</div>
+
+		</h:form>
+	</b:navBar>
+	<b:jumbotron rendered="#{usuarioBean.verificarSessao()}">
+		<b:container>
+			<h2>Meu Treino</h2>
+			<h:form>
+
+				<b:growl />
+
+				<b:dataTable value="#{exercicioBean.pegExercicioDoAluno()}"
+					var="exercicio">
+
+					<b:dataTableColumn value="#{exercicio.nomeExerc.nome}"
+						label="Exercicio" />
+					<b:dataTableColumn value="#{exercicio.nomeExerc.gMusc.label}"
+						label="Grupo Muscular" />
+					<b:dataTableColumn value="#{exercicio.serie}" />
+					<b:dataTableColumn value="#{exercicio.serieRepe.label}"
+						label="Serie / Repetiçao" />
+					<b:dataTableColumn value="#{exercicio.tipoCarga}"
+						label="Tipo de Carga	" />
+					<b:dataTableColumn value="#{exercicio.peso}" label="Peso	" />
+					<b:dataTableColumn value="#{exercicio.metodo.label}"
+						label="Metodo	" />
+					<b:dataTableColumn value="#{exercicio.periodizacao}"
+						label="Periodizaçao	" />
+
+
+				</b:dataTable>
+			</h:form>
+
+		</b:container>
+	</b:jumbotron>
+	<b:container rendered="#{usuarioBean.verificarSessao()}">
+
+		<hr />
+
+		<footer>
+			<p>� Yuri Morais / 2016</p>
+		</footer>
+	</b:container>
+
+</h:body>
+</html>

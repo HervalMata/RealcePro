@@ -1,0 +1,119 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui" xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>#RealcePro</title>
+	<meta name="author" content="Yuri Morais"></meta>
+</h:head>
+<h:body style="padding-top: 50px; padding-bottom: 20px;">
+	<b:navBar brand="RealcePro" brandHref="index_admin.jsf" inverse="true"
+		fixed="top" rendered="#{adminBean.verificarSessao()}">
+		<b:navbarLinks rendered="#{adminBean.verificarSessao()}">
+
+			<b:dropMenu value="Aluno">
+				<b:navLink value="Adicionar" href="#"></b:navLink>
+
+				<b:navLink></b:navLink>
+				<b:navLink value="Visualizar" />
+
+
+			</b:dropMenu>
+			<b:dropMenu value="Administrador">
+				<b:navLink value="Adicionar" href="cadastro-admin.jsf"></b:navLink>
+
+				<b:navLink></b:navLink>
+				<b:navLink value="Visualizar" href="lista-admin.jsf"></b:navLink>
+`
+
+			</b:dropMenu>
+
+			<b:dropMenu value="Treino">
+				<b:navLink value="Adicionar" href="cadastro-exercicio.jsf"></b:navLink>
+
+				<b:navLink></b:navLink>
+				<b:navLink value="Visualizar" href="lista-exercicio.jsf" />
+			</b:dropMenu>
+
+			<b:dropMenu value="Exercicio">
+				<b:navLink value="Adicionar" href="#"></b:navLink>
+
+				<b:navLink></b:navLink>
+				<b:navLink value="Visualizar"></b:navLink>
+`
+
+			</b:dropMenu>
+			<b:dropMenu value="Aviso">
+				<b:navLink value="Adicionar" href="cadastro-aviso.jsf"></b:navLink>
+
+				<b:navLink></b:navLink>
+				<b:navLink value="Visualizar" href="avisoadmin.jsf"></b:navLink>
+
+
+			</b:dropMenu>
+
+			<b:dropMenu value="Meu Perfil">
+				<b:navLink value="Visualizar" href="#"></b:navLink>
+
+				<b:navLink></b:navLink>
+				<b:navLink header="Seja Bem Vindo"></b:navLink>
+
+
+			</b:dropMenu>
+
+
+
+		</b:navbarLinks>
+
+
+		<h:form styleClass="navbar-form navbar-right"
+			rendered="#{adminBean.verificarSessao()}">
+			<div class="form-group">
+				`
+				<b:label text="Bem Vindo" severity="sucess" />
+			</div>
+		
+                  #{' '}
+               <div class="form-group">
+				<b:commandButton value="Sair" action="#{adminBean.encerrarSessao()}"
+					look="success" />
+			</div>
+
+		</h:form>
+	</b:navBar>
+	<b:jumbotron>
+		<b:container>
+			<h:form>
+				<h2>Cadastro de Administrador</h2>
+				<b:panel>
+					<b:panelGrid columns="4">
+						<p:outputLabel value="Nome" />
+						<b:inputText value="#{adminBean.admin.nome}" />
+
+						<p:outputLabel value="Email" />
+						<b:inputText value="#{adminBean.admin.email}" />
+
+						<p:outputLabel value="Senha" />
+						<b:inputSecret value="#{adminBean.admin.senha}" />
+
+						<p:outputLabel value="CPF" />
+						<b:inputText value="#{adminBean.admin.cpf}" />
+
+					</b:panelGrid>
+					<b:commandButton value="Salvar" action="#{adminBean.salvar}"
+						update="@form" style="margin-top:10px" />
+				</b:panel>
+			</h:form>
+		</b:container>
+	</b:jumbotron>
+	<b:container>
+
+		<hr />
+
+		<footer>
+			<p>� Yuri Morais / 2016</p>
+		</footer>
+	</b:container>
+</h:body>
+</html>

@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>#RealcePro</title>
+	<meta name="author" content="Yuri Morais"></meta>
+</h:head>
+<h:body style="padding-top: 50px; padding-bottom: 20px;">
+
+
+
+	<center>
+		<b:jumbotron style="width: 400px; height:300px; margin-top:40px">
+			<b:container>
+				<h2>Area Administrativa</h2>
+
+				<h:form styleClass="navbar-form navbar-right">
+					<b:growl />
+					<div class="form-group">
+
+						<b:inputText placeholder="Email" fieldSize="sm"
+							value="#{adminBean.admin.email}" />
+					</div>
+					<div class="form-group">
+						<b:inputSecret placeholder="Password" fieldSize="sm"
+							value="#{adminBean.admin.senha}" />
+					</div>
+                  #{' '}
+                  
+                  
+                  <b:commandButton
+						action="#{adminBean.verificarUsuario()}" value="Logar"
+						look="success" icon="chevron-right" iconAlign="right" />
+					
+
+				</h:form>
+			</b:container>
+		</b:jumbotron>
+	</center>
+	
+
+</h:body>
+</html>
